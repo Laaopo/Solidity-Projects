@@ -1,0 +1,22 @@
+```
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.7;
+
+contract HelloWorld{
+    //By Default set message
+    //string public message = "Hello World";
+    string public message;
+
+    //constructor is special function which call automatic when contract deploy
+    constructor (){
+        message = "Hello World!";
+    }
+    //Second method is setup new message
+    function Setmessage (string memory _newMessage) public {
+        message = _newMessage;
+        
+    }
+
+}
+
+```
