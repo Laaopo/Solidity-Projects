@@ -1,0 +1,28 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.7;
+
+contract SimpleStorage {
+    uint256 private storingData;
+
+    function Store(uint256 _store) public {
+        storingData = _store;
+
+    }
+
+    function Show() public view returns (uint256){
+        return storingData;
+    }
+}
+
+    //If you can define as public uint256 it means solidity 
+    //by default create getter function no need to define show function see below
+
+contract SimpleStorage2 {
+    uint256 public  StoredData;
+
+    function Store(uint256 _store) public {
+        StoredData = _store;
+
+    }
+
+}
