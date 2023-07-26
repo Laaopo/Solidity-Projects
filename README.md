@@ -1,6 +1,6 @@
 # Solidity Project Readme
 
-Welcome to the [Project Name] Solidity repository! This repository contains smart contracts written in Solidity, a programming language for developing decentralized applications on the Ethereum blockchain. Below you will find essential information to get started with this project.
+Welcome to the [Solidity Projects] Solidity repository! This repository contains smart contracts written in Solidity, a programming language for developing decentralized applications on the Ethereum blockchain. Below you will find essential information to get started with this project.
 
 ## Table of Contents
 
