@@ -1,0 +1,56 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.7;
+
+contract CoinFlip {
+    address private owner;
+    uint256 public contracBalance;
+
+    event CoinFlipped(address indexed player,bool result, uint256 winAmount);
+
+    constructor(){
+        owner = msg.sender;
+    }
+
+    function FlipCoiin() public payable {
+        require(msg.value > 0, "Please Pay Some Ethers!" );
+
+        uint256 betAmount = msg.value;
+        uint256 winings  = 0;
+
+        //Function For Decide Head Or Tell OR Random Number Generate in 0 Or 1
+        uint256 randomNumber = uint256(keccak256(abi.encodePacked(block.timestamp,msg.sender))) % 2;
+        bool playerwins;
+        if (randomNumber == 0){
+            playerwins = true;
+        }
+        else{
+            playerwins = false;
+        }
+
+        if (playerwins){
+            winings = betAmount * 2;
+            payable(msg.sender).transfer(winings);
+            contracBalance -= betAmount;
+
+        }
+        else {
+            contracBalance += betAmount;
+        }
+
+        emit CoinFlipped(msg.sender, playerwins, winings);
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the owner can call this function");
+        _;
+    }
+
+    function withdrawBalance() external onlyOwner {
+        uint256 contractBalance = address(this).balance;
+        require(contractBalance > 0, "Contract balance is zero");
+        // Transfer the contract balance to the owner
+        payable(owner).transfer(contractBalance);
+    }
+    
+
+}
